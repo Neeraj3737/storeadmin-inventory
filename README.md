@@ -135,6 +135,58 @@ inventory/
 
 
 
+## Assumptions & Design Decisions
+
+### 1. Data Loading & Pagination
+- **Assumption**: Initial load shows minimum 20 products as required, with pagination for additional products
+- **Decision**: Implemented "Load More" button instead of infinite scroll for better control and performance
+- **Reasoning**: Load More provides explicit user control and prevents overwhelming mobile devices with excessive data
+
+### 2. Search Functionality
+- **Assumption**: Search is performed on product names/titles as specified
+- **Decision**: Implemented debounced search (300ms) to balance responsiveness and API efficiency
+- **Reasoning**: Debouncing prevents API spam while maintaining a responsive feel
+
+### 3. Category Overview
+- **Assumption**: Categories should be displayed visually with product images rather than plain text
+- **Decision**: Fetch one sample product per category to use as category thumbnail
+- **Reasoning**: Visual representation is more intuitive and engaging for users
+
+### 4. Similar Products
+- **Assumption**: Similar products are defined as products from the same category
+- **Decision**: Display up to 5 similar products (excluding current product) to avoid overcrowding
+- **Reasoning**: Limited number maintains focus while providing useful recommendations
+
+### 5. Stock Status Display
+- **Assumption**: Stock status should be clearly visible with both text and color coding
+- **Decision**: Green background for in-stock, red for out-of-stock, with stock count
+- **Reasoning**: Color coding provides instant visual feedback, which is critical for inventory management
+
+### 6. Sorting Options
+- **Assumption**: Users need to sort by price (high-value items) and name
+- **Decision**: Implemented sorting by name (alphabetical) and price (low to high)
+- **Reasoning**: Alphabetical sorting helps with browsing, while price sorting helps identify valuable inventory
+
+### 7. Filtering
+- **Assumption**: Category filtering should be available on the main inventory view
+- **Decision**: Category filter is hidden when viewing a specific category (to avoid confusion)
+- **Reasoning**: When already filtered by category, additional category filter is redundant
+
+### 8. Error Handling
+- **Assumption**: Network errors and API failures should be handled gracefully
+- **Decision**: Display user-friendly error messages with retry functionality
+- **Reasoning**: Prevents blank screens and helps users understand what went wrong
+
+### 9. Design System
+- **Assumption**: Consistent color palette and spacing throughout the application
+- **Decision**: Used a cohesive color scheme (blues, grays, greens, reds) with consistent spacing units
+- **Reasoning**: Professional, cohesive appearance improves user trust and usability
+
+### 10. Mobile Responsiveness
+- **Assumption**: Application must work on desktop (1080p), tablet (iPad), and mobile devices
+- **Decision**: Responsive breakpoints and flexible grid layouts
+- **Reasoning**: Store managers need access on various devices for real-world usage scenarios
+
 ## Browser Compatibility
 
 The application is tested and works on:
