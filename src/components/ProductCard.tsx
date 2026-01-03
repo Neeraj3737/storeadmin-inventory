@@ -72,3 +72,4 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, showFullDetails = fa
 export default ProductCard;
 
 
+

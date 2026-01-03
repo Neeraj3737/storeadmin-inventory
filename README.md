@@ -5,14 +5,15 @@ A modern, responsive web-based inventory management system built with React. Thi
 ## Features
 
 ### 1. Welcome Home Page
-- User-friendly introduction to the application
-- Quick navigation to key features
-- Overview of application capabilities
+- **Modern Landing Experience**: Attractive hero section with gradient backgrounds and compelling messaging
+- **Feature Showcase**: Interactive cards highlighting key application capabilities (Inventory Analytics, Category Management)
+- **Enterprise Features Grid**: Comprehensive overview of advanced features including AI-powered search, responsive design, performance optimizations, analytics, recommendations, and stock intelligence
+- **Quick Navigation**: Direct access buttons to main application sections
 
 ### 2. Inventory Overview Screen
 - **Comprehensive Product List**: View all products with key information (Name, Price, Brand, Category, Stock Status, Rating)
 - **Advanced Filtering**: Filter products by category
-- **Flexible Sorting**: Sort products by name or price (low to high)
+- **Flexible Sorting**: Sort products by name (A-Z) or price (low to high)
 - **Real-time Search**: Search products by name with debounced input (300ms delay)
 - **Pagination**: Load more products on demand (initial load of 20+ products)
 - **Responsive Design**: Optimized for desktop, tablet, and mobile devices
@@ -31,9 +32,10 @@ A modern, responsive web-based inventory management system built with React. Thi
 ## Technology Stack
 
 - **React 19.2.3**: Frontend framework
+- **TypeScript**: Type-safe JavaScript
 - **React Router DOM**: Client-side routing
+- **Tailwind CSS**: Utility-first CSS framework
 - **DummyJSON API**: Backend API for product data
-- **CSS3**: Custom styling with responsive design
 - **Create React App**: Build tooling and development environment
 
 ## API Endpoints Used
@@ -85,25 +87,32 @@ This creates an optimized production build in the `build` folder.
 ```
 inventory/
 ├── public/
-│   └── index.html
+│   ├── index.html
+│   ├── manifest.json
+│   └── robots.txt
 ├── src/
 │   ├── components/          # Reusable components
-│   │   ├── Error.js        # Error display component
-│   │   ├── Loading.js      # Loading spinner component
-│   │   ├── Navbar.js       # Navigation bar
-│   │   └── ProductCard.js  # Product card component
+│   │   ├── ErrorDisplay.tsx # Error display component
+│   │   ├── Loading.tsx      # Loading spinner component
+│   │   ├── Navbar.tsx       # Navigation bar
+│   │   └── ProductCard.tsx  # Product card component
 │   ├── pages/              # Page components
-│   │   ├── Home.js         # Welcome/home page
-│   │   ├── InventoryOverview.js  # Main inventory list
-│   │   ├── ProductDetails.js     # Product detail page
-│   │   └── CategoryOverview.js   # Category browser
+│   │   ├── Home.tsx         # Welcome/home page
+│   │   ├── InventoryOverview.tsx  # Main inventory list
+│   │   ├── ProductDetails.tsx     # Product detail page
+│   │   └── CategoryOverview.tsx   # Category browser
 │   ├── services/           # API service layer
-│   │   └── api.js          # API functions
-│   ├── App.js              # Main app component with routing
-│   ├── App.css             # App-level styles
-│   ├── index.js            # Entry point
-│   └── index.css           # Global styles
+│   │   └── api.ts          # API functions
+│   ├── App.tsx             # Main app component with routing
+│   ├── App.test.tsx        # App component tests
+│   ├── index.tsx           # Entry point
+│   ├── index.css           # Global styles
+│   ├── reportWebVitals.ts  # Web vitals reporting
+│   └── setupTests.ts       # Test setup configuration
 ├── package.json
+├── tsconfig.json           # TypeScript configuration
+├── tailwind.config.js      # Tailwind CSS configuration
+├── postcss.config.js       # PostCSS configuration
 └── README.md
 ```
 
@@ -118,67 +127,13 @@ inventory/
 ### Responsive Design
 - Mobile-first approach with breakpoints at 480px, 768px, and 968px
 - Flexible grid layouts that adapt to screen size
-- Touch-friendly navigation and interactions
-- Optimized font sizes and spacing for different devices
 
 ### User Experience
 - Clear loading states with spinner animations
 - Comprehensive error handling with retry options
 - Intuitive navigation with active route highlighting
-- Visual feedback on interactive elements (hover states, transitions)
-- Stock status color coding (green for in-stock, red for out-of-stock)
 
-## Assumptions & Design Decisions
 
-### 1. Data Loading & Pagination
-- **Assumption**: Initial load shows minimum 20 products as required, with pagination for additional products
-- **Decision**: Implemented "Load More" button instead of infinite scroll for better control and performance
-- **Reasoning**: Load More provides explicit user control and prevents overwhelming mobile devices with excessive data
-
-### 2. Search Functionality
-- **Assumption**: Search is performed on product names/titles as specified
-- **Decision**: Implemented debounced search (300ms) to balance responsiveness and API efficiency
-- **Reasoning**: Debouncing prevents API spam while maintaining a responsive feel
-
-### 3. Category Overview
-- **Assumption**: Categories should be displayed visually with product images rather than plain text
-- **Decision**: Fetch one sample product per category to use as category thumbnail
-- **Reasoning**: Visual representation is more intuitive and engaging for users
-
-### 4. Similar Products
-- **Assumption**: Similar products are defined as products from the same category
-- **Decision**: Display up to 5 similar products (excluding current product) to avoid overcrowding
-- **Reasoning**: Limited number maintains focus while providing useful recommendations
-
-### 5. Stock Status Display
-- **Assumption**: Stock status should be clearly visible with both text and color coding
-- **Decision**: Green background for in-stock, red for out-of-stock, with stock count
-- **Reasoning**: Color coding provides instant visual feedback, which is critical for inventory management
-
-### 6. Sorting Options
-- **Assumption**: Users need to sort by price (high-value items) and name
-- **Decision**: Implemented sorting by name (alphabetical) and price (low to high)
-- **Reasoning**: Alphabetical sorting helps with browsing, while price sorting helps identify valuable inventory
-
-### 7. Filtering
-- **Assumption**: Category filtering should be available on the main inventory view
-- **Decision**: Category filter is hidden when viewing a specific category (to avoid confusion)
-- **Reasoning**: When already filtered by category, additional category filter is redundant
-
-### 8. Error Handling
-- **Assumption**: Network errors and API failures should be handled gracefully
-- **Decision**: Display user-friendly error messages with retry functionality
-- **Reasoning**: Prevents blank screens and helps users understand what went wrong
-
-### 9. Design System
-- **Assumption**: Consistent color palette and spacing throughout the application
-- **Decision**: Used a cohesive color scheme (blues, grays, greens, reds) with consistent spacing units
-- **Reasoning**: Professional, cohesive appearance improves user trust and usability
-
-### 10. Mobile Responsiveness
-- **Assumption**: Application must work on desktop (1080p), tablet (iPad), and mobile devices
-- **Decision**: Responsive breakpoints and flexible grid layouts
-- **Reasoning**: Store managers need access on various devices for real-world usage scenarios
 
 ## Browser Compatibility
 
@@ -188,16 +143,6 @@ The application is tested and works on:
 - Safari (latest)
 - Edge (latest)
 - Mobile browsers (iOS Safari, Chrome Mobile)
-
-## Future Enhancements (Potential)
-
-- Add sorting by price (high to low)
-- Implement favorite/bookmark products
-- Add product comparison feature
-- Export inventory data to CSV
-- Advanced filtering (by price range, rating, stock level)
-- Dark mode theme
-- Product analytics dashboard
 
 ## License
 
