@@ -227,14 +227,14 @@ const ProductDetails: React.FC = () => {
 
       {similarProducts.length > 0 && (
         <div className="mt-16 pt-8 border-t-2 border-gray-200">
-          <h2 className="text-2xl text-gray-800 m-0 mb-8">
+          <h2 className="text-2xl text-white m-0 mb-8">
             Browse Similar Products
           </h2>
 
           {loadingSimilar ? (
             <Loading message="Loading similar products..." />
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-4 xl:grid-cols-15 gap-6">
               {similarProducts.map(product => (
                 <ProductCard key={product.id} product={product} />
               ))}
