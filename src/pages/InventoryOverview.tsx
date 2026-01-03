@@ -242,7 +242,7 @@ const InventoryOverview: React.FC<InventoryOverviewProps> = ({
             }
             className="w-full px-4 py-3 border-2 border-gray-600 rounded-xl bg-black text-white"
           >
-            <option value="">Random (Default)</option>
+            <option value="">None</option>
             <option value="name">Name (A–Z)</option>
             <option value="price">Price (Low → High)</option>
           </select>

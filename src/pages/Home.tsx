@@ -22,7 +22,7 @@ const Home: React.FC = () => {
           </div>
           <h2 className="text-3xl font-bold text-white mb-4 relative z-10">Advanced Inventory Analytics</h2>
           <p className="text-gray-300 leading-relaxed mb-8 text-lg relative z-10">
-            Comprehensive product catalog with advanced filtering, real-time search with AI-powered suggestions, and detailed analytics dashboard for data-driven inventory decisions.
+            Comprehensive product catalog with advanced filtering, real-time search , and detailed analytics dashboard for data-driven inventory decisions.
           </p>
           <Link to="/inventory" className="inline-flex items-center bg-gradient-to-r from-blue-600 to-custom-gold text-white px-8 py-4 rounded-xl no-underline font-semibold transition-all duration-300 hover:from-blue-700 hover:to-custom-gold/80 hover:shadow-lg transform hover:scale-105 relative z-10">
             <span>Access Inventory Portal</span>
